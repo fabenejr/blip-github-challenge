@@ -1,0 +1,17 @@
+service: blip-github-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+
+functions:
+  getRepos:
+    handler: src/index.handler
+    events:
+      - http:
+          path: repos
+          method: get
+
+plugins:
+  - serverless-offline
