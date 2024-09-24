@@ -4,7 +4,7 @@ const GITHUB_API_URL = 'https://api.github.com/orgs/takenet/repos';
 
 exports.handler = async (event) => {
   try {
-    // Faz a requisição para a API pública do GitHub
+   
     const {data} = await axios.get(GITHUB_API_URL, {
       params: {
         q: 'lang:C#',
@@ -17,7 +17,7 @@ exports.handler = async (event) => {
       subtitle: repo.description,
       imageUrl: repo.owner.avatar_url
     }));
-  // Converte os itens para string para envio ao chatbot
+ 
   const carouselString = JSON.stringify(carouselItems);
 
   return {
