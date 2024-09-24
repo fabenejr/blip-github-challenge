@@ -8,14 +8,12 @@ exports.handler = async (event) => {
     const {data} = await axios.get(GITHUB_API_URL, {
       params: {
         q: 'lang:C#',
-        per_page: 5, // Limita para 5 repositórios
+        per_page: 5, 
       }
     });
 
-
-    // Mapeia os dados no formato esperado para o carrossel
     const carouselItems = data.map(repo => ({
-      title: repo.full_name.replace('takenet/', ''), // Remove 'takenet/' do nome completo
+      title: repo.full_name.replace('takenet/', ''), 
       subtitle: repo.description,
       imageUrl: repo.owner.avatar_url
     }));
@@ -24,7 +22,7 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    body: carouselString,  // Envia como string
+    body: carouselString,  
   };
   } catch (error) {
     console.error('Erro ao buscar repositórios:', error);
